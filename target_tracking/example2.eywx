@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<MainPatch version="6">
+
+  <Patch>
+    <Properties>
+      <PropertySet name="gui-mdi">
+        <Property name="Private.ZoomFactor">1</Property>
+        <Property name="Private.RunLevel">1</Property>
+        <Property name="Private.ScrollPos">386;27</Property>
+      </PropertySet>
+    </Properties>
+    <Blocks>
+      <Block active="1" catalog="system" class-id="wdmvideo_input" id="21" label="FrameGrabber_1" log_info="2" run_level="1" sync-in_mode="1">
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Appearance.Pos">60;170</Property>
+            <Property name="Private.ZOrder">11</Property>
+            <Property name="Private.ObjID">1</Property>
+            <Property name="Appearance.Size">64;64</Property>
+            <Property name="Appearance.Orientation">1</Property>
+            <Property name="Private.ExportedParams"></Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ParamsOrder">kernel::active_status;kernel::active_trigger;kernel::run_level;kernel::sync_in_mode;kernel::log_level;datatype_info;device;color_model;size;fps;vert_mirror;horiz-mirror;type;gain_flag;gain_value;brightness_flag;brightness_value;overridedeviceinitfailed;device_type</Property>
+            <Property name="Private.FullPath">FrameGrabber (ImageAndVideo.Input)</Property>
+            <Property name="DisplaySyncInVisible">0</Property>
+            <Property name="DisplaySyncOutVisible">0</Property>
+          </PropertySet>
+        </Properties>
+        <Parameters>
+          <Parameter catalog="kernel" class-id="string_pair" description="Type of the output image: Image, OpenGLCGImage, CUDA Image, Image, etc..." design-time="1" enabled="1" group_index="0" id="datatype_info" name="Output Image Type" run-time="0">
+            <Value>base;image</Value>
+            <Domain/>
+            <Layout catalog="kernel" class-id="datatype_selector_combo">base;image_conversion;base;image_roi;base;memory_buffer;base;image_mirror</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="string" description="Device" design-time="1" enabled="1" group_index="0" id="device" name="Device" run-time="1">
+            <Value></Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="Image Color Model" design-time="1" enabled="1" group_index="0" id="color_model" name="Image Color Model" run-time="0">
+            <Value>1</Value>
+            <Domain/>
+            <Layout catalog="kernel" class-id="combo">RGB (3 channels - 24 bits);BGR (3 channels - 24 bits);YUV (3 channels - 24 bits);BW (1 channels - 8 bits);YUYV (3 channels (Y,U,Y,V) );UYVY (3 channels (U,Y,V,Y) );I420 (3 channels planar (Y,U,V) );YV12 (3 channels planar (Y,V,U) );RGBA (4 channels - 32 bits);BGRA (4 channels - 32 bits);YUVA (4 channels - 32 bits)</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="base" class-id="size2d_int" description="Output Image Size" design-time="1" enabled="1" group_index="0" id="size" name="Size" run-time="0">
+            <Value>352;288</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="double" description="Frames per second." design-time="1" enabled="1" group_index="0" id="fps" name="Frames per second." run-time="1">
+            <Value>25</Value>
+            <Domain catalog="kernel" class-id="double-domain">0.001;1;0;0</Domain>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="Vertical Mirror" design-time="1" enabled="1" group_index="0" id="vert_mirror" name="Vertical Mirror" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="Specifies whether the image must be swaped horizontaly" design-time="1" enabled="1" group_index="0" id="horiz-mirror" name="Horizontal Mirror" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="Type" design-time="1" enabled="1" group_index="0" id="type" name="Type" run-time="0">
+            <Value>0</Value>
+            <Domain/>
+            <Layout catalog="kernel" class-id="combo">AUTO;PAL-B;NTSC</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="Specifies the desired control setting for the Gain property.&#xA;Default - use the current driver setting&#xA;Auto - enables autogain&#xA;Manual - set the user-specified value&#xA;" design-time="1" enabled="1" group_index="0" id="gain_flag" name="Video Quality: Gain Flag" run-time="1">
+            <Value>2</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;3;2</Domain>
+            <Layout catalog="kernel" class-id="combo">Default;Auto;Manual</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="double" description="Specifies the value of the Gain property. Is is used only if Gain Flag is set to manual" design-time="1" enabled="1" group_index="0" id="gain_value" name="Video Quality: Gain Value" run-time="1">
+            <Value>0.5</Value>
+            <Domain catalog="kernel" class-id="double-domain">0;1;1;1</Domain>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="Specifies the desired control setting for the Brightness property.&#xA;Default - use the current driver setting&#xA;Auto - enables autobrightness&#xA;Manual - set the user-specified value&#xA;" design-time="1" enabled="1" group_index="0" id="brightness_flag" name="Video Quality: Brightness Flag" run-time="1">
+            <Value>2</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;3;2</Domain>
+            <Layout catalog="kernel" class-id="combo">Default;Auto;Manual</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="double" description="Specifies the value of the Brightness property. Is is used only if Brightness Flag is set to manual" design-time="1" enabled="1" group_index="0" id="brightness_value" name="Video Quality: Brightness Value" run-time="1">
+            <Value>0.5</Value>
+            <Domain catalog="kernel" class-id="double-domain">0;1;1;1</Domain>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="If the system cannot initialize the selected WDM device the patch will be executed anyway." design-time="1" enabled="1" group_index="0" id="overridedeviceinitfailed" name="Override device init failed." run-time="1">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="Custom device properties" design-time="1" enabled="1" group_index="0" id="device_type" name="Custom device properties" run-time="0">
+            <Value>0</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;3;2</Domain>
+            <Layout catalog="kernel" class-id="combo">Default - none;Video crossbar compliant device;Decklink frame grabber</Layout>
+            <InitInfo/>
+          </Parameter>
+        </Parameters>
+        <Inputs/>
+        <Outputs>
+          <Output catalog="base" class-id="image" description="Output" group_index="0" id="video_stream" inherited-id="" inplace-id="" name="Output"/>
+        </Outputs>
+        <PrivateData/>
+      </Block>
+      <Block active="1" catalog="base" class-id="OpenCV-Trackers" id="105" label="OpenCV-Trackers_1" log_info="2" run_level="1" sync-in_mode="1">
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Appearance.Pos">440;250</Property>
+            <Property name="Private.ZOrder">10</Property>
+            <Property name="Private.ObjID">2</Property>
+            <Property name="Appearance.Size">112;64</Property>
+            <Property name="Appearance.Orientation">1</Property>
+            <Property name="Private.ExportedParams"></Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ParamsOrder">kernel::active_status;kernel::active_trigger;kernel::run_level;kernel::sync_in_mode;kernel::log_level;SelectedTracker</Property>
+            <Property name="Private.FullPath">OpenCV-Trackers (ImageAndVideo.Tracking)</Property>
+            <Property name="DisplaySyncInVisible">0</Property>
+            <Property name="DisplaySyncOutVisible">0</Property>
+          </PropertySet>
+        </Properties>
+        <Parameters>
+          <Parameter catalog="kernel" class-id="int" description="Selected Open-CV tracker" design-time="1" enabled="1" group_index="0" id="SelectedTracker" name="Tracker name" run-time="0">
+            <Value>1</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;6;2</Domain>
+            <Layout catalog="kernel" class-id="combo">Boosting;KCF;MedianFlow;MIL;TLD;GOTURN</Layout>
+            <InitInfo/>
+          </Parameter>
+        </Parameters>
+        <Inputs>
+          <Input catalog="base" class-id="image" description="input" group_index="0" id="InputImage" name="Input Image" read-write="0" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces/>
+          </Input>
+          <Input catalog="base" class-id="rectangle_2d_int" description="ROI" group_index="0" id="InputROI" name="InputROI" read-write="0" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces/>
+          </Input>
+        </Inputs>
+        <Outputs>
+          <Output catalog="base" class-id="rectangle_2d_int" description="Tracked ROI coordinates " group_index="0" id="OutputROI" inherited-id="" inplace-id="" name="ROI Output"/>
+        </Outputs>
+        <PrivateData/>
+      </Block>
+      <Block active="1" catalog="system" class-id="D3D11ImageDisplay" id="162" label="DisplayDirectX11-Interact_1" log_info="2" run_level="1" sync-in_mode="1" window_docked="1" window_fit_mode="1" window_full_screen="0" window_full_screen_monitor_index="0" window_horizontal_scroll_pos="0" window_keep_aspect_ratio="1" window_rect_height="0" window_rect_width="0" window_rect_x="0" window_rect_y="0" window_refresh_rate_max_frequency="25" window_refresh_rate_min_interval="400000" window_refresh_rate_mode="0" window_title="DisplayDirectX11-Interact" window_title_bar_visible="1" window_vertical_scroll_pos="0" window_zoom="0.28409090909090906">
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Appearance.Pos">260;290</Property>
+            <Property name="Private.ZOrder">12</Property>
+            <Property name="Private.ObjID">3</Property>
+            <Property name="Appearance.Size">116;112</Property>
+            <Property name="Appearance.Orientation">1</Property>
+            <Property name="Private.ExportedParams"></Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ParamsOrder">kernel::active_status;kernel::active_trigger;kernel::run_level;kernel::sync_in_mode;kernel::log_level;QueueAlgo;QueueMaxSize;QueuePurge;ParamOutputQueueStatus;ParamOutputMouseMode;ParamOutputMouseDT;MirrorX;MirrorY;kernel::window_title;kernel::window_rect_x;kernel::window_rect_y;kernel::window_rect_width;kernel::window_rect_height;kernel::window_docked;kernel::window_full_screen;kernel::window_full_screen_monitor_index;kernel::window_zoom;kernel::window_keep_aspect_ratio;kernel::window_horizontal_scroll_pos;kernel::window_vertical_scroll_pos;kernel::window_title_visible;kernel::window_refresh_rate_mode;kernel::window_refresh_rate_min_interval;kernel::window_refresh_rate_max_frequency;kernel::fit_mode</Property>
+            <Property name="Private.FullPath">DisplayDirectX11-Interact (ImageAndVideo.Output)</Property>
+            <Property name="DisplaySyncInVisible">0</Property>
+            <Property name="DisplaySyncOutVisible">0</Property>
+          </PropertySet>
+        </Properties>
+        <Parameters>
+          <Parameter catalog="kernel" class-id="int" description="To respect the image presentation time this display use a ordered queue. This parameter selects the algorithm used to manage the presentation time ('ignore', 'respect'). When 'ignore' is selected the input image is displayed immediately (bypassing the queue), otherwise the image is stored into the queue and is displayed when the clock time matches the presentation time." design-time="1" enabled="1" group_index="0" id="QueueAlgo" name="Presentation time" run-time="1">
+            <Value>0</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;2;2</Domain>
+            <Layout catalog="kernel" class-id="combo">ignore the presentation time;respect the presentation time</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="This parameter set the maximum number of images stored into the internal queue." design-time="1" enabled="1" group_index="0" id="QueueMaxSize" name="Queue max size" run-time="1">
+            <Value>50</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="trigger" description="Drop all images contained into the internal queue." design-time="1" enabled="1" group_index="0" id="QueuePurge" name="Purge queue" run-time="1">
+            <Value></Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="Output the internal queue status (number of image into the queue, number of image skipped in the last execution cycle)." design-time="1" enabled="1" group_index="0" id="ParamOutputQueueStatus" name="Output queue status" run-time="0">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="This parameter enable, disable and select the Output mode of mouse click position." design-time="1" enabled="1" group_index="0" id="ParamOutputMouseMode" name="Mouse handling" run-time="0">
+            <Value>3</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;4;2</Domain>
+            <Layout catalog="kernel" class-id="combo">none;output position;output click position;output selection rectangle</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="This parameter select the type of output pins." design-time="1" enabled="1" group_index="0" id="ParamOutputMouseDT" name="Mouse output datatype" run-time="0">
+            <Value>0</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;2;2</Domain>
+            <Layout catalog="kernel" class-id="combo">Rectangle integer coordinate;Rectangle double coordinate</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="This parameter enable or disable the horizontal mirror of the mouse axis system." design-time="1" enabled="1" group_index="0" id="MirrorX" name="Mouse Horizontal Mirror" run-time="1">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="This parameter enable or disable the vertical mirror of the mouse axis system." design-time="1" enabled="1" group_index="0" id="MirrorY" name="Mouse Vertical Mirror" run-time="1">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+        </Parameters>
+        <Inputs>
+          <Input catalog="base" class-id="image" description="Image to display." group_index="0" id="InputImage" name="Image" read-write="1" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces/>
+          </Input>
+        </Inputs>
+        <Outputs>
+          <Output catalog="base" class-id="rectangle_2d_int" description="This output pin give the last mouse click position. The value is in pixel units." group_index="0" id="OutputMouse" inherited-id="" inplace-id="" name="Mouse selection (rectangle2D int)"/>
+        </Outputs>
+        <PrivateData/>
+      </Block>
+      <Block active="1" catalog="base" class-id="set_stroke_properties_2d" id="264" label="SetShapeStroke_1" log_info="2" run_level="1" sync-in_mode="1">
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Appearance.Pos">610;270</Property>
+            <Property name="Private.ZOrder">6</Property>
+            <Property name="Private.ObjID">4</Property>
+            <Property name="Appearance.Size">64;64</Property>
+            <Property name="Appearance.Orientation">1</Property>
+            <Property name="Private.ExportedParams"></Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ParamsOrder">kernel::active_status;kernel::active_trigger;kernel::run_level;kernel::sync_in_mode;kernel::log_level;set_color;color;set_alpha;alpha;set_width;width</Property>
+            <Property name="Private.FullPath">SetShapeStroke (Geometric.Operations.2D)</Property>
+            <Property name="DisplaySyncInVisible">0</Property>
+            <Property name="DisplaySyncOutVisible">0</Property>
+          </PropertySet>
+        </Properties>
+        <Parameters>
+          <Parameter catalog="kernel" class-id="bool" description="Specifies whether to set the color of the graphical geometric datatype." design-time="1" enabled="1" group_index="0" id="set_color" name="SetColor" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="rgbcolor" description="Specifies the color of the graphical geometric datatype." design-time="1" enabled="1" group_index="0" id="color" name="Color" run-time="1">
+            <Value>rgb: 1;1;1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="Specifies whether to set the width of the graphical geometric datatype." design-time="1" enabled="1" group_index="0" id="set_alpha" name="SetAlpha" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="double" description="Specifies the alpha level of the graphical geometric datatype." design-time="1" enabled="1" group_index="0" id="alpha" name="Alpha" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="Specifies whether to set the width of the graphical geometric datatype." design-time="1" enabled="1" group_index="0" id="set_width" name="SetWidth" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="double" description="Specifies the width of the graphical geometric datatype." design-time="1" enabled="1" group_index="0" id="width" name="Width" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+        </Parameters>
+        <Inputs>
+          <Input catalog="kernel" class-id="generic_datatype" description="The input bidimensional graphical object of which to change the properties" group_index="0" id="input" name="Input Graphical Object" read-write="0" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces>
+              <RequiredInterface catalog="base" class-id="stroke_properties"/>
+            </RequiredInterfaces>
+          </Input>
+        </Inputs>
+        <Outputs>
+          <Output catalog="kernel" class-id="generic_datatype" description="A bidimensional graphical object where the stroke properties have been changed by this block." group_index="0" id="output" inherited-id="" inplace-id="input" name="Output Graphical Object"/>
+        </Outputs>
+        <PrivateData/>
+      </Block>
+      <Block active="1" catalog="base" class-id="DrawGraphicObject" id="321" label="DrawGraphicObject_1" log_info="2" run_level="1" sync-in_mode="1">
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Appearance.Pos">710;140</Property>
+            <Property name="Private.ZOrder">4</Property>
+            <Property name="Private.ObjID">5</Property>
+            <Property name="Appearance.Size">64;64</Property>
+            <Property name="Appearance.Orientation">1</Property>
+            <Property name="Private.ExportedParams"></Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ParamsOrder">kernel::active_status;kernel::active_trigger;kernel::run_level;kernel::sync_in_mode;kernel::log_level;nInput;Quality;draw_unchanged_parameters</Property>
+            <Property name="Private.FullPath">DrawGraphicObject (ImageAndVideo.Draw)</Property>
+            <Property name="DisplaySyncInVisible">0</Property>
+            <Property name="DisplaySyncOutVisible">0</Property>
+          </PropertySet>
+        </Properties>
+        <Parameters>
+          <Parameter catalog="kernel" class-id="int" description="Number Input" design-time="1" enabled="1" group_index="0" id="nInput" name="Number Input" run-time="0">
+            <Value>1</Value>
+            <Domain catalog="kernel" class-id="int-domain">1;1;0;0</Domain>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="Quality draw" design-time="1" enabled="1" group_index="0" id="Quality" name="Quality" run-time="1">
+            <Value>1</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;3;2</Domain>
+            <Layout catalog="kernel" class-id="combo">High quality;Medium quality;Low quality</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="If set to true, each time the block is activated it draws all inputs, regardless of whether they are changed or not (this is the old behaviour). If false (default behaviour), only changed datatypes are drawn." design-time="1" enabled="1" group_index="0" id="draw_unchanged_parameters" name="Draw Unchanged Datatypes" run-time="1">
+            <Value>1</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+        </Parameters>
+        <Inputs>
+          <Input catalog="base" class-id="image" description="The input image on which the graphic object will be drawn." group_index="0" id="InputImage" name="Input image" read-write="0" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces/>
+          </Input>
+          <Input catalog="kernel" class-id="generic_datatype" description="The graphic object to be drawn." group_index="0" id="InputGraphicObject00" name="Input graphic object" read-write="0" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces>
+              <RequiredInterface catalog="base" class-id="drawing"/>
+            </RequiredInterfaces>
+          </Input>
+        </Inputs>
+        <Outputs>
+          <Output catalog="base" class-id="image" description="The output image on which the graphic object has been drawn." group_index="0" id="Output" inherited-id="" inplace-id="InputImage" name="Output image"/>
+        </Outputs>
+        <PrivateData/>
+      </Block>
+      <Block active="1" catalog="system" class-id="D3D11ImageDisplay" id="376" label="DisplayDirectX11-Interact_2" log_info="2" run_level="1" sync-in_mode="1" window_docked="1" window_fit_mode="1" window_full_screen="0" window_full_screen_monitor_index="0" window_horizontal_scroll_pos="0" window_keep_aspect_ratio="1" window_rect_height="0" window_rect_width="0" window_rect_x="0" window_rect_y="0" window_refresh_rate_max_frequency="25" window_refresh_rate_min_interval="400000" window_refresh_rate_mode="0" window_title="DisplayDirectX11-Interact" window_title_bar_visible="1" window_vertical_scroll_pos="0" window_zoom="0.28409090909090906">
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Appearance.Pos">880;180</Property>
+            <Property name="Private.ZOrder">1</Property>
+            <Property name="Private.ObjID">6</Property>
+            <Property name="Appearance.Size">116;112</Property>
+            <Property name="Appearance.Orientation">1</Property>
+            <Property name="Private.ExportedParams"></Property>
+            <Property name="Private.Selected">1</Property>
+            <Property name="Private.ParamsOrder">kernel::active_status;kernel::active_trigger;kernel::run_level;kernel::sync_in_mode;kernel::log_level;QueueAlgo;QueueMaxSize;QueuePurge;ParamOutputQueueStatus;ParamOutputMouseMode;ParamOutputMouseDT;MirrorX;MirrorY;kernel::window_title;kernel::window_rect_x;kernel::window_rect_y;kernel::window_rect_width;kernel::window_rect_height;kernel::window_docked;kernel::window_full_screen;kernel::window_full_screen_monitor_index;kernel::window_zoom;kernel::window_keep_aspect_ratio;kernel::window_horizontal_scroll_pos;kernel::window_vertical_scroll_pos;kernel::window_title_visible;kernel::window_refresh_rate_mode;kernel::window_refresh_rate_min_interval;kernel::window_refresh_rate_max_frequency;kernel::fit_mode</Property>
+            <Property name="Private.FullPath">DisplayDirectX11-Interact (ImageAndVideo.Output)</Property>
+            <Property name="DisplaySyncInVisible">0</Property>
+            <Property name="DisplaySyncOutVisible">0</Property>
+          </PropertySet>
+        </Properties>
+        <Parameters>
+          <Parameter catalog="kernel" class-id="int" description="To respect the image presentation time this display use a ordered queue. This parameter selects the algorithm used to manage the presentation time ('ignore', 'respect'). When 'ignore' is selected the input image is displayed immediately (bypassing the queue), otherwise the image is stored into the queue and is displayed when the clock time matches the presentation time." design-time="1" enabled="1" group_index="0" id="QueueAlgo" name="Presentation time" run-time="1">
+            <Value>0</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;2;2</Domain>
+            <Layout catalog="kernel" class-id="combo">ignore the presentation time;respect the presentation time</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="This parameter set the maximum number of images stored into the internal queue." design-time="1" enabled="1" group_index="0" id="QueueMaxSize" name="Queue max size" run-time="1">
+            <Value>50</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="trigger" description="Drop all images contained into the internal queue." design-time="1" enabled="1" group_index="0" id="QueuePurge" name="Purge queue" run-time="1">
+            <Value></Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="Output the internal queue status (number of image into the queue, number of image skipped in the last execution cycle)." design-time="1" enabled="1" group_index="0" id="ParamOutputQueueStatus" name="Output queue status" run-time="0">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="This parameter enable, disable and select the Output mode of mouse click position." design-time="1" enabled="1" group_index="0" id="ParamOutputMouseMode" name="Mouse handling" run-time="0">
+            <Value>3</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;4;2</Domain>
+            <Layout catalog="kernel" class-id="combo">none;output position;output click position;output selection rectangle</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="int" description="This parameter select the type of output pins." design-time="1" enabled="1" group_index="0" id="ParamOutputMouseDT" name="Mouse output datatype" run-time="0">
+            <Value>0</Value>
+            <Domain catalog="kernel" class-id="int-domain">0;1;2;2</Domain>
+            <Layout catalog="kernel" class-id="combo">Rectangle integer coordinate;Rectangle double coordinate</Layout>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="This parameter enable or disable the horizontal mirror of the mouse axis system." design-time="1" enabled="1" group_index="0" id="MirrorX" name="Mouse Horizontal Mirror" run-time="1">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+          <Parameter catalog="kernel" class-id="bool" description="This parameter enable or disable the vertical mirror of the mouse axis system." design-time="1" enabled="1" group_index="0" id="MirrorY" name="Mouse Vertical Mirror" run-time="1">
+            <Value>0</Value>
+            <Domain/>
+            <Layout/>
+            <InitInfo/>
+          </Parameter>
+        </Parameters>
+        <Inputs>
+          <Input catalog="base" class-id="image" description="Image to display." group_index="0" id="InputImage" name="Image" read-write="1" required_for_execution="1" required_for_initialization="1">
+            <RequiredInterfaces/>
+          </Input>
+        </Inputs>
+        <Outputs>
+          <Output catalog="base" class-id="rectangle_2d_int" description="This output pin give the last mouse click position. The value is in pixel units." group_index="0" id="OutputMouse" inherited-id="" inplace-id="" name="Mouse selection (rectangle2D int)"/>
+        </Outputs>
+        <PrivateData/>
+      </Block>
+    </Blocks>
+    <PatchPins/>
+    <CustomObjects/>
+    <Links>
+      <Link>
+        <Pin block="21" id="video_stream" type="source"/>
+        <Pin block="105" id="InputImage" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">9</Property>
+            <Property name="Private.ObjID">7</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+      <Link>
+        <Pin block="162" id="OutputMouse" type="source"/>
+        <Pin block="105" id="InputROI" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">8</Property>
+            <Property name="Private.ObjID">8</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+      <Link>
+        <Pin block="21" id="video_stream" type="source"/>
+        <Pin block="162" id="InputImage" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">7</Property>
+            <Property name="Private.ObjID">9</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+      <Link>
+        <Pin block="105" id="OutputROI" type="source"/>
+        <Pin block="264" id="input" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">5</Property>
+            <Property name="Private.ObjID">10</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+      <Link>
+        <Pin block="264" id="output" type="source"/>
+        <Pin block="321" id="InputGraphicObject00" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">3</Property>
+            <Property name="Private.ObjID">11</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+      <Link>
+        <Pin block="21" id="video_stream" type="source"/>
+        <Pin block="321" id="InputImage" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">2</Property>
+            <Property name="Private.ObjID">12</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+      <Link>
+        <Pin block="321" id="Output" type="source"/>
+        <Pin block="376" id="InputImage" target_type="input" type="target"/>
+        <Properties>
+          <PropertySet name="gui-mdi">
+            <Property name="Private.SrcPinDelta">0;0</Property>
+            <Property name="Private.SrcPinNdx">-1</Property>
+            <Property name="Private.DstPinDelta">0;0</Property>
+            <Property name="Private.DstPinNdx">-1</Property>
+            <Property name="Private.NumPins">0</Property>
+            <Property name="Private.Selected">0</Property>
+            <Property name="Private.ZOrder">0</Property>
+            <Property name="Private.ObjID">13</Property>
+          </PropertySet>
+        </Properties>
+      </Link>
+    </Links>
+  </Patch>
+
+</MainPatch>
