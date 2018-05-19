@@ -28,9 +28,9 @@ SynthDef(\in_grain_test, {arg gate = 1, amp = 1, envbuf;
 
         doneAction: 2);
 
-    Out.ar(0, GrainIn.ar(1, Impulse.kr(grain_rate), grain_rate.reciprocal, SoundIn.ar * 0.9, 0, envbuf) * env);
+    Out.ar(0, GrainIn.ar(1, Impulse.kr(grain_rate), grain_rate.reciprocal, SoundIn.ar * 1, 0, envbuf) * env);
 
-    Out.ar(1, SoundIn.ar * 0.5);
+    Out.ar(1, SoundIn.ar * 0.8);
 
     }).send(s);
 
